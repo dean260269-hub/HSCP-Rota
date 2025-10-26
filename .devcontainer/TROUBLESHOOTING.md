@@ -51,12 +51,12 @@ If you want to use Codespaces beyond the free tier, you need a payment method.
 
 ### 4. Organization Quota Issues
 
-If this repository belongs to an organization, the org might have hit its quota.
+If this repository belongs to an organization, the organization's quota might have been exceeded.
 
 **How to Fix:**
 1. Contact your organization administrator
-2. They need to check the organization's billing settings
-3. The org may need to increase its Codespaces spending limit
+2. The administrator needs to check the organization's billing settings at the org level
+3. The organization may need to increase its Codespaces spending limit
 
 ### 5. Stale Browser/Authentication State
 
@@ -98,7 +98,7 @@ If you've verified all of the above and still see the billing error:
 1. **Double-check your billing settings** at https://github.com/settings/billing
 2. **Wait 10-15 minutes** after making billing changes for them to propagate
 3. **Try from a different browser** or incognito mode
-4. **Contact GitHub Support** at https://support.github.com with:
+4. **Contact GitHub Support** through your GitHub account settings or at https://support.github.com/request with:
    - Your GitHub username
    - The exact error message
    - Screenshots of your billing settings showing valid payment info

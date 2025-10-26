@@ -13,7 +13,7 @@ After further investigation, this error message is **NOT caused by missing devco
 
 ### Most Common Causes:
 
-1. **Monthly Quota Exceeded**: GitHub's free tier includes 120-180 core-hours per month. Once exceeded, you get this error even with valid billing.
+1. **Monthly Quota Exceeded**: GitHub's free tier includes limited core-hours per month (120 core-hours for Free accounts, 180 core-hours for Pro/Student accounts). Once exceeded, you get this error even with valid billing.
 
 2. **Spending Limit Set to $0**: Even with a payment method on file, if your Codespaces spending limit is $0, you'll see this error after exceeding free quota.
 
@@ -140,7 +140,7 @@ If you ever want to verify your actual billing settings:
 
 If you're still seeing the billing error:
 
-1. **Check quota**: Visit https://github.com/settings/billing/summary - Have you exceeded 120 core-hours this month?
+1. **Check quota**: Visit https://github.com/settings/billing/summary - Have you exceeded your monthly core-hours? (120 for Free, 180 for Pro/Student)
 2. **Check spending limit**: Visit https://github.com/settings/billing/spending_limit - Is Codespaces set to $0?
 3. **Delete old codespaces**: Visit https://github.com/codespaces - Delete unused codespaces
 4. **Clear cache**: Log out, clear browser cache, log back in
