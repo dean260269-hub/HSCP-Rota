@@ -44,7 +44,7 @@ A complete database setup automation script that:
 - Made the MySQL startup process more user-friendly
 
 #### .devcontainer/README.md
-- Expanded troubleshooting section with 6+ detailed solutions
+- Expanded troubleshooting section with 8+ detailed solutions
 - Added multiple approaches to fix MySQL startup issues:
   - Standard startup commands
   - Homebrew services management
@@ -116,8 +116,8 @@ brew services start mysql
 - `.devcontainer/devcontainer.json` - Enhanced postCreateCommand
 
 ## Files Added
-- `start-mysql.sh` - MySQL startup helper with diagnostics (175 lines)
-- `setup-database.sh` - Complete database setup automation (107 lines)
+- `start-mysql.sh` - MySQL startup helper with diagnostics (153 lines)
+- `setup-database.sh` - Complete database setup automation (118 lines)
 - `MYSQL_STARTUP.md` - This documentation file
 
 ## Benefits
