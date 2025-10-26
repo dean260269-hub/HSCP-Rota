@@ -8,7 +8,7 @@
     }
   },
 
-  "postCreateCommand": "echo 'Development environment ready! Run: mysql -u root < schema.sql to set up the database.'",
+  "postCreateCommand": "bash -c 'echo \"Development environment ready!\"; echo \"Starting MySQL server...\"; mysql.server start 2>/dev/null || brew services start mysql 2>/dev/null || echo \"MySQL may already be running. Check with: ps aux | grep mysql\"; echo \"To set up the database, run:\"; echo \"  mysql -u root -e \\\"CREATE DATABASE hscp_rota CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;\\\"\"; echo \"  mysql -u root hscp_rota < schema.sql\"; echo \"  mysql -u root hscp_rota -e \\\"SHOW TABLES;\\\"\"'",
 
   "customizations": {
     "vscode": {
