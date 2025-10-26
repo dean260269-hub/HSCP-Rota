@@ -1,5 +1,7 @@
 # Development Container Configuration
 
+> 📚 **See also:** [DOCUMENTATION_INDEX.md](../DOCUMENTATION_INDEX.md) - Complete guide to all project documentation
+
 This directory contains the configuration for GitHub Codespaces and VS Code Dev Containers.
 
 ## What's Included
@@ -91,3 +93,11 @@ ps aux | grep mysql
 
 ### Permission Issues
 The default configuration uses `root` with no password, which is fine for development environments. For production, always use strong passwords and proper user accounts.
+
+## Related Documentation
+
+For more information about the HSCP-Rota project:
+- 📚 **[DOCUMENTATION_INDEX.md](../DOCUMENTATION_INDEX.md)** - Complete documentation guide
+- 🔧 **[CODESPACES_FIX.md](../CODESPACES_FIX.md)** - Troubleshooting Codespaces issues
+- 🚀 **[QUICK_START.md](../QUICK_START.md)** - Database setup and operations
+- 📖 **[README.md](../README.md)** - Project overview

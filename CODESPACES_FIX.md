@@ -1,5 +1,7 @@
 # GitHub Codespaces Billing Notification - Issue Resolution
 
+> 📚 **See also:** [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md) - Complete guide to all project documentation
+
 ## The Problem
 
 You were receiving this message when trying to use GitHub Codespaces:
@@ -96,3 +98,11 @@ If you still see any errors when launching Codespaces:
 2. Check that your GitHub account has Codespaces enabled
 3. Verify spending limits aren't set to $0
 4. Contact GitHub Support if the issue persists (they can check your actual billing status)
+
+## Related Documentation
+
+For more information about the HSCP-Rota project:
+- 📚 **[DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md)** - Complete documentation guide
+- 🔧 **[.devcontainer/README.md](.devcontainer/README.md)** - Dev container setup guide
+- 🚀 **[QUICK_START.md](QUICK_START.md)** - Database setup and operations
+- 📖 **[README.md](README.md)** - Project overview

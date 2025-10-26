@@ -378,12 +378,14 @@ LEFT JOIN Users u ON lr.ReviewedBy = u.SAP
 WHERE lr.ReviewedBy IS NOT NULL AND u.SAP IS NULL;
 ```
 
-## Support
+## Related Documentation
 
 For detailed information, refer to:
-- **DATABASE_SCHEMA.md** - Complete schema documentation
-- **ERD.md** - Entity relationship diagrams
-- **schema.sql** - The actual database creation script
+- 📚 **[DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md)** - Complete guide to all project documentation
+- 📝 **[DATABASE_SCHEMA.md](DATABASE_SCHEMA.md)** - Complete schema documentation
+- 📊 **[ERD.md](ERD.md)** - Entity relationship diagrams
+- 💻 **[schema.sql](schema.sql)** - The actual database creation script
+- 📖 **[README.md](README.md)** - Project overview
 
 ## Notes
 
