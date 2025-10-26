@@ -1,0 +1,37 @@
+{
+  "name": "HSCP-Rota Development",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/mysql-homebrew:1": {
+      "version": "latest"
+    }
+  },
+
+  "postCreateCommand": "echo 'Development environment ready! Run: mysql -u root < schema.sql to set up the database.'",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-mysql",
+        "GitHub.copilot"
+      ],
+      "settings": {
+        "sqltools.useNodeRuntime": true,
+        "files.associations": {
+          "*.sql": "sql"
+        }
+      }
+    }
+  },
+
+  "forwardPorts": [3306],
+  
+  "portsAttributes": {
+    "3306": {
+      "label": "MySQL Database",
+      "onAutoForward": "notify"
+    }
+  }
+}
