@@ -34,7 +34,25 @@ The system uses a relational database with 7 core tables:
 
 ## Getting Started
 
-### Database Setup
+### Quick Start with GitHub Codespaces
+
+The fastest way to get started is using GitHub Codespaces:
+
+1. Click the **Code** button above
+2. Select **Codespaces** tab
+3. Click **Create codespace on main**
+4. Wait for the environment to build
+5. Run the setup commands in the integrated terminal:
+
+```bash
+mysql.server start
+mysql -u root -e "CREATE DATABASE hscp_rota CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+mysql -u root hscp_rota < schema.sql
+```
+
+See [.devcontainer/README.md](.devcontainer/README.md) for more details on using Codespaces.
+
+### Local Database Setup
 
 1. Choose your database platform (MySQL, MariaDB, PostgreSQL, or SQL Server)
 2. Create a new database for the application
