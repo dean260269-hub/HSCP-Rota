@@ -4,12 +4,14 @@ This directory contains the configuration for GitHub Codespaces and VS Code Dev 
 
 ## What's Included
 
-- **Base Image**: Universal Development Container (includes common development tools)
-- **MySQL/MariaDB**: Pre-configured database server for working with the HSCP-Rota schema
+- **Base Image**: Lightweight Ubuntu-based development container
+- **MySQL**: Official MySQL feature from devcontainers
 - **VS Code Extensions**:
   - SQLTools: Database management and query execution
   - SQLTools MySQL Driver: MySQL/MariaDB connectivity
   - GitHub Copilot: AI-powered code assistance
+
+This configuration is optimized to minimize resource usage and reduce the chance of hitting Codespaces quota limits.
 
 ## Using GitHub Codespaces
 
@@ -97,6 +99,15 @@ You can modify `devcontainer.json` to:
 See the [Dev Containers documentation](https://containers.dev) for more options.
 
 ## Troubleshooting
+
+### Getting "Billing Issue" Error?
+
+**This is NOT a devcontainer problem!** The billing error is almost always caused by:
+- Exceeding monthly quota (120-180 core-hours/month on free tier)
+- Codespaces spending limit set to $0
+- Old codespaces not deleted (counting toward storage quota)
+
+**See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for complete solutions to billing errors.**
 
 ### MySQL Won't Start
 

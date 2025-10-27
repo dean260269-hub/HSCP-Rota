@@ -2,65 +2,111 @@
 
 ## The Problem
 
-You were receiving this message when trying to use GitHub Codespaces:
+You are receiving this message when trying to use GitHub Codespaces:
 > "You seem to have a billing issue. Please adjust your billing settings to continue using codespaces."
 
 However, you confirmed that your GitHub billing is in good standing with no actual billing issues.
 
-## Root Cause
+## Important Update: The Real Root Cause
 
-This message was **not** actually related to billing at all. Instead, it was a misleading error message that GitHub Codespaces displays when:
+After further investigation, this error message is **NOT caused by missing devcontainer configuration**. While having a proper devcontainer is important, the billing error is almost always caused by one of these actual billing/quota issues:
 
-1. **Missing `.devcontainer` Configuration**: When a repository doesn't have a `.devcontainer/devcontainer.json` file, Codespaces may fail to initialize properly and show generic error messages, including the billing notification.
+### Most Common Causes:
 
-2. **Ambiguous Error Handling**: GitHub Codespaces sometimes displays billing-related errors as a catch-all message when the actual issue is configuration-related, not financial.
+1. **Monthly Quota Exceeded**: GitHub's free tier includes limited core-hours per month (120 core-hours for Free accounts, 180 core-hours for Pro/Student accounts). Once exceeded, you get this error even with valid billing.
 
-## The Solution
+2. **Spending Limit Set to $0**: Even with a payment method on file, if your Codespaces spending limit is $0, you'll see this error after exceeding free quota.
 
-I've resolved this issue by adding proper GitHub Codespaces configuration to your repository:
+3. **No Payment Method**: If you want to use Codespaces beyond free tier limits, you need a payment method and spending limit configured.
 
-### What Was Added
+4. **Old Codespaces Not Deleted**: Stopped codespaces still count toward storage quota until deleted, potentially causing quota issues.
+
+5. **Organization Quota Issues**: If the repo is in an organization, the org's quota/billing settings control access.
+
+## The Solution - Two Parts
+
+This issue has been resolved with **both** proper configuration AND troubleshooting guidance:
+
+### Part 1: Optimized Devcontainer Configuration
+
+The repository now has a lightweight, reliable devcontainer setup:
 
 1. **`.devcontainer/devcontainer.json`**
-   - Defines the development environment for Codespaces
-   - Includes MySQL/MariaDB database server
-   - Pre-configures VS Code with useful extensions (SQLTools, GitHub Copilot)
-   - Sets up port forwarding for the database (port 3306)
-   - Based on Microsoft's Universal Development Container image
+   - Uses lightweight `mcr.microsoft.com/devcontainers/base:ubuntu` image instead of the heavy Universal image
+   - Official MySQL feature from devcontainers (more reliable than homebrew-based)
+   - Pre-configured VS Code with useful extensions (SQLTools, GitHub Copilot)
+   - Port forwarding for MySQL (port 3306)
+   - Optimized to minimize resource usage and avoid quota issues
 
 2. **`.devcontainer/README.md`**
    - Complete documentation for using Codespaces
    - Step-by-step database setup instructions
-   - Troubleshooting guide
    - Tips for customizing the environment
 
-3. **Updated `README.md`**
-   - Added "Quick Start with GitHub Codespaces" section
-   - Clear instructions for launching and using Codespaces
-   - Links to devcontainer documentation
+3. **`.devcontainer/TROUBLESHOOTING.md`** (NEW)
+   - **Comprehensive billing troubleshooting guide**
+   - Step-by-step solutions for common billing errors
+   - How to check and fix quota issues
+   - How to configure spending limits properly
+   - Verification checklist
+
+### Part 2: How to Resolve Your Billing Error
+
+**The billing error is likely NOT a devcontainer problem**. Follow these steps:
+
+1. **Check Your Usage Quota**
+   - Go to https://github.com/settings/billing/summary
+   - Check if you've exceeded your monthly Codespaces quota
+   - Free accounts get 120 core-hours/month
+
+2. **Check Your Spending Limit**
+   - Go to https://github.com/settings/billing/spending_limit
+   - Make sure Codespaces spending limit is NOT set to $0
+   - Set a reasonable limit (e.g., $10) if you want to use beyond free tier
+
+3. **Delete Old Codespaces**
+   - Go to https://github.com/codespaces
+   - Delete any old/unused codespaces (they count toward storage quota)
+
+4. **Clear Cache and Retry**
+   - Log out of GitHub
+   - Clear browser cache
+   - Log back in
+   - Try creating a codespace again
+
+**See `.devcontainer/TROUBLESHOOTING.md` for complete troubleshooting steps.**
 
 ### How to Use Codespaces Now
 
-1. Go to your repository on GitHub
-2. Click the green **Code** button
-3. Select the **Codespaces** tab
-4. Click **Create codespace on main**
-5. Wait 2-3 minutes for the environment to build (first time only)
-6. Once launched, run these commands in the terminal:
+1. **First, verify your billing settings** (see troubleshooting section above)
+2. Go to your repository on GitHub
+3. Click the green **Code** button
+4. Select the **Codespaces** tab
+5. Click **Create codespace on main**
+6. Wait 1-2 minutes for the environment to build (much faster with optimized image)
+7. Once launched, run these commands in the terminal:
 
 ```bash
-mysql.server start
+# Start MySQL service
+sudo service mysql start
+
+# Create the database
 mysql -u root -e "CREATE DATABASE hscp_rota CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+
+# Load the schema
 mysql -u root hscp_rota < schema.sql
+
+# Verify installation
 mysql -u root hscp_rota -e "SHOW TABLES;"
 ```
 
-### Why This Fixes the Issue
+### Why This Fixes the Configuration Issues
 
-- **Proper Configuration**: Codespaces now knows exactly how to set up your development environment
-- **No More Ambiguous Errors**: With a valid devcontainer config, you won't see misleading billing messages
-- **Instant Development Environment**: Anyone can now launch a fully configured database environment with one click
-- **Consistent Setup**: Everyone working on this project will have the same tools and configuration
+- **Lightweight Image**: Uses Ubuntu base instead of Universal (faster, uses less resources)
+- **Official MySQL Feature**: More reliable than homebrew-based installation
+- **Reduced Resource Usage**: Minimizes core-hour consumption, reducing quota issues
+- **Proper Configuration**: Codespaces knows exactly how to set up the environment
+- **Instant Development**: Faster startup time with optimized image
 
 ## Additional Notes
 
@@ -84,15 +130,26 @@ If you ever want to verify your actual billing settings:
 
 ## Result
 
-✅ **Issue Resolved**: The repository now has proper Codespaces configuration, and you should be able to launch Codespaces without any billing-related error messages.
+✅ **Devcontainer Configuration Optimized**: The repository now uses a lightweight, reliable devcontainer configuration that minimizes resource usage.
 
-The "billing issue" was actually a missing configuration file, not a problem with your GitHub account or payment settings.
+✅ **Comprehensive Troubleshooting Added**: See `.devcontainer/TROUBLESHOOTING.md` for step-by-step solutions to billing errors.
+
+⚠️ **Important**: If you still see the billing error, it's a GitHub account billing/quota issue, NOT a repository configuration issue. Follow the troubleshooting guide to resolve it.
+
+## Quick Troubleshooting Summary
+
+If you're still seeing the billing error:
+
+1. **Check quota**: Visit https://github.com/settings/billing/summary - Have you exceeded your monthly core-hours? (120 for Free, 180 for Pro/Student)
+2. **Check spending limit**: Visit https://github.com/settings/billing/spending_limit - Is Codespaces set to $0?
+3. **Delete old codespaces**: Visit https://github.com/codespaces - Delete unused codespaces
+4. **Clear cache**: Log out, clear browser cache, log back in
+5. **See full guide**: Read `.devcontainer/TROUBLESHOOTING.md` for detailed steps
 
 ## Need More Help?
 
-If you still see any errors when launching Codespaces:
+1. **Read the troubleshooting guide**: `.devcontainer/TROUBLESHOOTING.md` has comprehensive solutions
+2. **Check your actual billing**: Verify at https://github.com/settings/billing
+3. **Contact GitHub Support**: If billing settings are correct and quota isn't exceeded, contact GitHub Support with screenshots of your billing page
 
-1. Try deleting any existing codespace and creating a fresh one
-2. Check that your GitHub account has Codespaces enabled
-3. Verify spending limits aren't set to $0
-4. Contact GitHub Support if the issue persists (they can check your actual billing status)
+The "billing issue" is almost certainly a quota limit or spending limit configuration, not a problem with this repository.

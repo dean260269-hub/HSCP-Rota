@@ -1,9 +1,9 @@
 {
   "name": "HSCP-Rota Development",
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   
   "features": {
-    "ghcr.io/devcontainers-contrib/features/mysql-homebrew:1": {
+    "ghcr.io/devcontainers/features/mysql:1": {
       "version": "latest"
     }
   },
