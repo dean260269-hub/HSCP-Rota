@@ -1,5 +1,7 @@
 # GitHub Codespaces Billing Notification - Issue Resolution
 
+> 📚 **See also:** [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md) - Complete guide to all project documentation
+
 ## The Problem
 
 You are receiving this message when trying to use GitHub Codespaces:
@@ -152,4 +154,16 @@ If you're still seeing the billing error:
 2. **Check your actual billing**: Verify at https://github.com/settings/billing
 3. **Contact GitHub Support**: If billing settings are correct and quota isn't exceeded, contact GitHub Support with screenshots of your billing page
 
+1. Try deleting any existing codespace and creating a fresh one
+2. Check that your GitHub account has Codespaces enabled
+3. Verify spending limits aren't set to $0
+4. Contact GitHub Support if the issue persists (they can check your actual billing status)
+
+## Related Documentation
+
+For more information about the HSCP-Rota project:
+- 📚 **[DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md)** - Complete documentation guide
+- 🔧 **[.devcontainer/README.md](.devcontainer/README.md)** - Dev container setup guide
+- 🚀 **[QUICK_START.md](QUICK_START.md)** - Database setup and operations
+- 📖 **[README.md](README.md)** - Project overview
 The "billing issue" is almost certainly a quota limit or spending limit configuration, not a problem with this repository.

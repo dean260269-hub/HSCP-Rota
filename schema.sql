@@ -6,6 +6,14 @@
 -- Description: Complete database schema for staff scheduling system including
 --              users, roles, units, shifts, rotas, and leave management
 -- ============================================================================
+--
+-- Related Documentation:
+-- - DOCUMENTATION_INDEX.md - Complete guide to all project documentation
+-- - DATABASE_SCHEMA.md - Detailed schema specifications and constraints
+-- - ERD.md - Entity relationship diagrams and design patterns
+-- - QUICK_START.md - SQL usage examples and common operations
+-- - README.md - Project overview and getting started
+-- ============================================================================
 
 -- ============================================================================
 -- Table: Users

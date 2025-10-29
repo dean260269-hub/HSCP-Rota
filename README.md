@@ -28,8 +28,12 @@ The system uses a relational database with 7 core tables:
 
 ### Documentation
 
+📚 **[DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md)** - Complete guide to all project documentation files
+
+Key documentation files:
 - **[DATABASE_SCHEMA.md](DATABASE_SCHEMA.md)** - Comprehensive database schema documentation
 - **[ERD.md](ERD.md)** - Entity Relationship Diagram and relationship descriptions
+- **[QUICK_START.md](QUICK_START.md)** - Quick start guide with SQL examples
 - **[schema.sql](schema.sql)** - SQL DDL file to create the database
 
 ## Getting Started

@@ -491,6 +491,16 @@ The schema is designed for scalability, data integrity, and performance while ma
 
 ---
 
+## Related Documentation
+
+- 📚 **[DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md)** - Complete guide to all project documentation
+- 📊 **[ERD.md](ERD.md)** - Visual entity relationship diagrams
+- 🚀 **[QUICK_START.md](QUICK_START.md)** - Practical SQL examples and operations
+- 💻 **[schema.sql](schema.sql)** - SQL DDL implementation script
+- 📖 **[README.md](README.md)** - Project overview
+
+---
+
 **Document Version:** 1.0  
 **Last Updated:** October 2025  
 **Maintained by:** HSCP-Rota Development Team

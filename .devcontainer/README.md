@@ -1,5 +1,7 @@
 # Development Container Configuration
 
+> 📚 **See also:** [DOCUMENTATION_INDEX.md](../DOCUMENTATION_INDEX.md) - Complete guide to all project documentation
+
 This directory contains the configuration for GitHub Codespaces and VS Code Dev Containers.
 
 ## What's Included
@@ -208,23 +210,10 @@ mysql.server start
 ### Permission Issues
 The default configuration uses `root` with no password, which is fine for development environments. For production, always use strong passwords and proper user accounts.
 
-### Getting Help
-If none of these solutions work:
-1. Check the MySQL error log: `tail -f $(brew --prefix)/var/mysql/*.err`
-2. Verify Homebrew installation: `brew doctor`
-3. Reinstall MySQL: `brew reinstall mysql`
-4. Check system resources: Ensure you have enough disk space and memory
+## Related Documentation
 
-### Quick Troubleshooting with Helper Scripts
-
-The repository includes helper scripts that automate troubleshooting:
-
-```bash
-# Automatically diagnose and start MySQL
-./start-mysql.sh
-
-# Complete database setup with error checking
-./setup-database.sh
-```
-
-These scripts provide detailed diagnostics and attempt multiple methods to resolve common issues.
+For more information about the HSCP-Rota project:
+- 📚 **[DOCUMENTATION_INDEX.md](../DOCUMENTATION_INDEX.md)** - Complete documentation guide
+- 🔧 **[CODESPACES_FIX.md](../CODESPACES_FIX.md)** - Troubleshooting Codespaces issues
+- 🚀 **[QUICK_START.md](../QUICK_START.md)** - Database setup and operations
+- 📖 **[README.md](../README.md)** - Project overview
