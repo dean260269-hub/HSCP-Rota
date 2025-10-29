@@ -1,5 +1,7 @@
 # Development Container Configuration
 
+> 📚 **See also:** [DOCUMENTATION_INDEX.md](../DOCUMENTATION_INDEX.md) - Complete guide to all project documentation
+
 This directory contains the configuration for GitHub Codespaces and VS Code Dev Containers.
 
 ## What's Included
@@ -107,7 +109,7 @@ See the [Dev Containers documentation](https://containers.dev) for more options.
 - Codespaces spending limit set to $0
 - Old codespaces not deleted (counting toward storage quota)
 
-**See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for complete solutions to billing errors.**
+**See .devcontainer/TROUBLESHOOTING.md for complete solutions to billing errors.**
 
 ### MySQL Won't Start
 
@@ -228,3 +230,10 @@ The repository includes helper scripts that automate troubleshooting:
 ```
 
 These scripts provide detailed diagnostics and attempt multiple methods to resolve common issues.
+
+## Related Documentation
+
+- 📚 **[DOCUMENTATION_INDEX.md](../DOCUMENTATION_INDEX.md)** - Complete guide to all project documentation
+- 🔧 **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Devcontainer and Codespaces troubleshooting
+- 🚀 **[QUICK_START.md](../QUICK_START.md)** - Database setup and operations
+- 📖 **[README.md](../README.md)** - Project overview
