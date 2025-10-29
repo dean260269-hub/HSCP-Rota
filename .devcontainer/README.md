@@ -23,11 +23,33 @@ This configuration is optimized to minimize resource usage and reduce the chance
 
 ## Setting Up the Database
 
-After the Codespace launches, run the following commands in the terminal:
+After the Codespace launches, you have two options:
+
+### Option A: Automated Setup (Recommended)
+
+Use the provided setup script for automatic database initialization:
 
 ```bash
-# Start MySQL service
-sudo service mysql start
+./setup-database.sh
+```
+
+This script will:
+- Check if MySQL is running (and start it if needed)
+- Create the hscp_rota database
+- Load the schema from schema.sql
+- Verify the installation
+- Show you the available tables and sample data
+
+### Option B: Manual Setup
+
+Run the following commands in the terminal:
+
+```bash
+# Start MySQL service (if not already running)
+./start-mysql.sh
+
+# Or use the direct command:
+# mysql.server start
 
 # Create the database
 mysql -u root -e "CREATE DATABASE hscp_rota CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
@@ -88,17 +110,121 @@ See the [Dev Containers documentation](https://containers.dev) for more options.
 **See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for complete solutions to billing errors.**
 
 ### MySQL Won't Start
+
+If you encounter issues starting MySQL, try these solutions in order:
+
+#### Solution 1: Standard Startup Command
 ```bash
-sudo service mysql start
-# or check if it's already running
-sudo service mysql status
+mysql.server start
+```
+
+#### Solution 2: Use Homebrew Services
+```bash
+brew services start mysql
+```
+
+#### Solution 3: Check if MySQL is Already Running
+```bash
+# Check for MySQL processes
+ps aux | grep mysql
+
+# If running, connect directly without starting
+mysql -u root
+```
+
+#### Solution 4: Check MySQL Status
+```bash
+# Check service status
+brew services list | grep mysql
+
+# View MySQL error logs
+tail -n 50 $(brew --prefix)/var/mysql/*.err
+```
+
+#### Solution 5: Restart MySQL Service
+```bash
+# Stop any existing MySQL process
+mysql.server stop
+# or
+brew services stop mysql
+
+# Wait a moment, then start again
+sleep 2
+mysql.server start
+```
+
+#### Solution 6: Fix Permissions
+```bash
+# Fix ownership of MySQL data directory
+sudo chown -R $(whoami) $(brew --prefix)/var/mysql
+
+# Try starting again
+mysql.server start
 ```
 
 ### Port Already in Use
-Check if MySQL is already running:
+If port 3306 is already in use by another service:
+
 ```bash
-ps aux | grep mysql
+# Find what's using port 3306
+lsof -i :3306
+
+# Kill the process if needed (use the PID from above)
+kill -9 <PID>
+
+# Or change MySQL port in my.cnf
+# echo "port = 3307" >> $(brew --prefix)/etc/my.cnf
+```
+
+### Connection Refused Errors
+```bash
+# Ensure MySQL socket file exists
+ls -la /tmp/mysql.sock
+
+# If missing, create symbolic link
+ln -s $(brew --prefix)/var/mysql/mysql.sock /tmp/mysql.sock
+```
+
+### Command Not Found: mysql.server
+```bash
+# Add Homebrew MySQL to PATH
+echo 'export PATH="$(brew --prefix)/opt/mysql/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+
+# Or use full path
+$(brew --prefix)/opt/mysql/bin/mysql.server start
+```
+
+### Database Initialization Failed
+```bash
+# Reinitialize MySQL data directory
+rm -rf $(brew --prefix)/var/mysql
+mysqld --initialize-insecure --user=$(whoami) --basedir=$(brew --prefix)/opt/mysql --datadir=$(brew --prefix)/var/mysql
+
+# Start MySQL
+mysql.server start
 ```
 
 ### Permission Issues
 The default configuration uses `root` with no password, which is fine for development environments. For production, always use strong passwords and proper user accounts.
+
+### Getting Help
+If none of these solutions work:
+1. Check the MySQL error log: `tail -f $(brew --prefix)/var/mysql/*.err`
+2. Verify Homebrew installation: `brew doctor`
+3. Reinstall MySQL: `brew reinstall mysql`
+4. Check system resources: Ensure you have enough disk space and memory
+
+### Quick Troubleshooting with Helper Scripts
+
+The repository includes helper scripts that automate troubleshooting:
+
+```bash
+# Automatically diagnose and start MySQL
+./start-mysql.sh
+
+# Complete database setup with error checking
+./setup-database.sh
+```
+
+These scripts provide detailed diagnostics and attempt multiple methods to resolve common issues.

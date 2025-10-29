@@ -42,15 +42,38 @@ The fastest way to get started is using GitHub Codespaces:
 2. Select **Codespaces** tab
 3. Click **Create codespace on main**
 4. Wait for the environment to build
-5. Run the setup commands in the integrated terminal:
+5. Run the setup in the integrated terminal:
 
+#### Option A: Automated Setup (Recommended)
 ```bash
-sudo service mysql start
-mysql -u root -e "CREATE DATABASE hscp_rota CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-mysql -u root hscp_rota < schema.sql
+# One-line setup - starts MySQL and creates database
+./setup-database.sh
 ```
 
-**Seeing a billing error?** This is usually a quota or spending limit issue, not a configuration problem. See [.devcontainer/TROUBLESHOOTING.md](.devcontainer/TROUBLESHOOTING.md) for solutions.
+#### Option B: Manual Setup
+```bash
+# Start MySQL server (using Homebrew on macOS)
+./start-mysql.sh
+
+# Or use the direct command:
+# mysql.server start
+
+# Create the database
+mysql -u root -e "CREATE DATABASE hscp_rota CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+
+# Load the schema
+mysql -u root hscp_rota < schema.sql
+
+# Verify the setup
+mysql -u root hscp_rota -e "SHOW TABLES;"
+```
+
+**Troubleshooting MySQL Startup:**
+- Use the `./start-mysql.sh` script for automatic troubleshooting
+- If `mysql.server start` fails, try `brew services start mysql`
+- Check if MySQL is already running: `ps aux | grep mysql`
+- View detailed diagnostics in the start-mysql.sh script output
+- See [.devcontainer/README.md](.devcontainer/README.md) for comprehensive troubleshooting
 
 See [.devcontainer/README.md](.devcontainer/README.md) for more details on using Codespaces.
 
