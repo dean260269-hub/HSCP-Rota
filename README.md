@@ -49,10 +49,12 @@ The fastest way to get started is using GitHub Codespaces:
 5. Run the setup commands in the integrated terminal:
 
 ```bash
-mysql.server start
+sudo service mysql start
 mysql -u root -e "CREATE DATABASE hscp_rota CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 mysql -u root hscp_rota < schema.sql
 ```
+
+**Seeing a billing error?** This is usually a quota or spending limit issue, not a configuration problem. See [.devcontainer/TROUBLESHOOTING.md](.devcontainer/TROUBLESHOOTING.md) for solutions.
 
 See [.devcontainer/README.md](.devcontainer/README.md) for more details on using Codespaces.
 
