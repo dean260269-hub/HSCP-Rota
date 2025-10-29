@@ -1,5 +1,7 @@
 # GitHub Codespaces Billing Notification - Issue Resolution
 
+> 📚 **See also:** [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md) - Complete guide to all project documentation
+
 ## The Problem
 
 You are receiving this message when trying to use GitHub Codespaces:
@@ -9,11 +11,11 @@ However, you confirmed that your GitHub billing is in good standing with no actu
 
 ## Important Update: The Real Root Cause
 
-After further investigation, this error message is **NOT caused by missing devcontainer configuration**. While having a proper devcontainer is important, the billing error is almost always caused by one of these actual billing/quota issues:
+After further investigation, this error message is **NOT caused by missing devcontainer configuration**. While having a proper devcontainer is important, the billing error is almost always caused by quota/spending-limit issues or account/organization billing settings.
 
 ### Most Common Causes:
 
-1. **Monthly Quota Exceeded**: GitHub's free tier includes limited core-hours per month (120 core-hours for Free accounts, 180 core-hours for Pro/Student accounts). Once exceeded, you get this error even with valid billing.
+1. **Monthly Quota Exceeded**: GitHub's free tier includes limited core-hours per month (120 core-hours for Free accounts, 180 core-hours for Pro/Student accounts). Once exceeded, you can see this error.
 
 2. **Spending Limit Set to $0**: Even with a payment method on file, if your Codespaces spending limit is $0, you'll see this error after exceeding free quota.
 
@@ -146,10 +148,12 @@ If you're still seeing the billing error:
 4. **Clear cache**: Log out, clear browser cache, log back in
 5. **See full guide**: Read `.devcontainer/TROUBLESHOOTING.md` for detailed steps
 
-## Need More Help?
+## Related Documentation
 
-1. **Read the troubleshooting guide**: `.devcontainer/TROUBLESHOOTING.md` has comprehensive solutions
-2. **Check your actual billing**: Verify at https://github.com/settings/billing
-3. **Contact GitHub Support**: If billing settings are correct and quota isn't exceeded, contact GitHub Support with screenshots of your billing page
+- 📚 **[DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md)** - Complete documentation guide
+- 🔧 **[.devcontainer/README.md](.devcontainer/README.md)** - Dev container setup guide
+- 🚀 **[QUICK_START.md](QUICK_START.md)** - Database setup and operations
+- 📖 **[README.md](README.md)** - Project overview
+
 
 The "billing issue" is almost certainly a quota limit or spending limit configuration, not a problem with this repository.
